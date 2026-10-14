@@ -1,0 +1,233 @@
+* {
+    box-sizing: border-box;
+    font-family: "Comic Sans MS", Arial, sans-serif; /* Emula el texto a mano de tus bocetos */
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#ffe2e9f6);
+    background-attachment: fixed;
+    padding: 20px 0;
+}
+
+.contenedor-principal {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 0;
+    box-shadow: none;
+
+    width: 600px;
+    max-width: 90%;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+/* Control de vistas de la aplicación */
+.pantalla.oculta,
+.oculta {
+    display: none !important;
+}
+
+.pantalla.activa {
+    display: block;
+}
+
+/* Controles generales */
+.fila-config {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.fila-config label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+}
+
+select, input[type="text"], textarea {
+    border: 2px solid #000;
+    padding: 5px;
+    background: white;
+}
+
+.layout-columnas {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.columna-matriz {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Matrices */
+.grid-matriz {
+    display: grid;
+    gap: 6px;
+    padding: 10px;
+    border-left: 3px solid #000;
+    border-right: 3px solid #000;
+    margin: 10px auto 20px auto;
+    width: fit-content;
+    max-width: 100%;
+}
+
+.grid-matriz input,
+.grid-matriz .celda {
+    width: 56px;
+    height: 36px;
+    text-align: center;
+    border: 2px solid #000;
+    padding: 4px;
+    font-size: 15px;
+    background: white;
+}
+
+.grid-matriz .celda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    overflow: hidden;
+    font-size: 13px;
+}
+
+.grid-matriz.resaltada .celda {
+    background: #ffe2e9;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Botones */
+.botones-accion {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.botones-accion.centrado { justify-content: center; flex-wrap: wrap; }
+
+button {
+    padding: 8px 15px;
+    cursor: pointer;
+    border: 2px solid #000;
+    background: white;
+}
+
+button:hover {
+    background: #f0f0f0;
+}
+
+.mensaje-error {
+    color: #c0392b;
+    min-height: 20px;
+    margin: 0 0 10px 0;
+}
+
+/* ===== MENSAJE (textarea) ===== */
+
+.columna-texto {
+    flex: 1;
+    min-width: 220px;
+}
+
+#mensaje {
+    width: 100%;
+    resize: vertical;
+    font-size: 15px;
+}
+
+/* ===== PANTALLA DE RESULTADOS ===== */
+
+#pantalla-resultado {
+    display: none;
+    text-align: center;
+}
+
+#pantalla-resultado.activa {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 15px;
+    align-items: start;
+}
+
+/* Elementos a todo el ancho */
+#pantalla-resultado h2,
+#descripcion-resultado,
+#bloque-texto-final,
+#nota-resultado,
+#pantalla-resultado .botones-accion {
+    grid-column: 1 / -1;
+}
+
+#bloque-sin-modulo,
+#bloque-con-modulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-width: 0;
+}
+
+#bloque-sin-modulo { grid-column: 1; }
+#bloque-con-modulo { grid-column: 2; }
+
+#bloque-sin-modulo > span,
+#etiqueta-mod {
+    display: block;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+#grid-crudo,
+#grid-resultado {
+    margin: 10px auto 20px;
+    max-width: 100%;
+    gap: 4px;
+}
+
+#grid-crudo input,
+#grid-crudo .celda,
+#grid-resultado input,
+#grid-resultado .celda {
+    width: 38px;
+    height: 34px;
+}
+
+/* Texto final */
+.caja-texto {
+    border: 2px solid #000;
+    background: #ffe2e9;
+    padding: 12px;
+    margin: 10px auto 20px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    word-break: break-all;
+    text-align: center;
+    max-width: 100%;
+}
+
+#nota-resultado {
+    font-size: 13px;
+    margin-top: 0;
+}

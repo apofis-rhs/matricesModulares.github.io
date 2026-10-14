@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrices Modulares</title>
+    <link rel="stylesheet" href="hill.css">
+    <style>
+        /* Ajustes para fracciones (celdas más anchas) */
+        .contenedor-principal { width: 760px; }
+        .grid-matriz input { width: 72px; }
+        #grid-crudo .celda,
+        #grid-resultado .celda {
+            width: auto;
+            min-width: 44px;
+            padding: 4px 8px;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        #bloque-sin-modulo, #bloque-con-modulo { overflow-x: auto; }
+        .ayuda { font-size: 13px; margin: 0 0 15px 0; }
+    </style>
+</head>
+<body>
+<div class="contenedor-principal">
+    <h1>Matrices modulares</h1>
+
+    <!-- PANTALLA 1: Configuración -->
+    <div id="pantalla-1" class="pantalla activa">
+        <p>Elige el tamaño, el módulo y la operación</p>
+
+        <div class="fila-config">
+            <label>Tamaño
+                <select id="tamano">
+                    <option value="2">2 x 2</option>
+                    <option value="3" selected>3 x 3</option>
+                </select>
+            </label>
+
+            <label>Módulo (m)
+                <input type="text" id="modulo" value="26" inputmode="numeric">
+            </label>
+
+            <label>Operación
+                <select id="operacion">
+                    <option value="multiplicacion">A × B (mod m)</option>
+                    <option value="inversa">Inversa de A (mod m)</option>
+                </select>
+            </label>
+        </div>
+
+        <p id="error-1" class="mensaje-error"></p>
+        <button id="btn-siguiente">Siguiente</button>
+    </div>
+
+    <!-- PANTALLA 2: Captura de matrices -->
+    <div id="pantalla-2" class="pantalla oculta">
+        <p class="ayuda">Acepta enteros, negativos (-5), fracciones (3/4, -1/2) y decimales (0.5)</p>
+        <div class="layout-columnas">
+            <div class="columna-matriz">
+                <span>Matriz A</span>
+                <div id="grid-a" class="grid-matriz"></div>
+            </div>
+            <div class="columna-matriz" id="bloque-b">
+                <span>Matriz B</span>
+                <div id="grid-b" class="grid-matriz"></div>
+            </div>
+        </div>
+
+        <p id="error-2" class="mensaje-error"></p>
+        <div class="botones-accion centrado">
+            <button id="btn-volver">Atrás</button>
+            <button id="btn-calcular">Calcular</button>
+        </div>
+    </div>
+
+    <!-- PANTALLA 3: Resultado -->
+    <div id="pantalla-resultado" class="pantalla oculta">
+        <h2>Resultado</h2>
+        <p id="descripcion-resultado"></p>
+
+        <div id="bloque-sin-modulo">
+            <span id="etiqueta-crudo">Resultado sin módulo</span>
+            <div id="grid-crudo" class="grid-matriz"></div>
+        </div>
+
+        <div id="bloque-con-modulo">
+            <span id="etiqueta-mod">Resultado mod m</span>
+            <div id="grid-resultado" class="grid-matriz resaltada"></div>
+        </div>
+
+        <p id="nota-resultado"></p>
+
+        <div class="botones-accion centrado">
+            <button id="btn-editar">Editar matrices</button>
+            <button id="btn-reiniciar">Nueva operación</button>
+        </div>
+    </div>
+</div>
+<script src="matriz.js"></script>
+</body>
+</html>
